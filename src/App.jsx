@@ -20,7 +20,7 @@ export default function App() {
   const [toast, setToast] = useState("");
   
   const isOnline = useOnlineStatus(); // NAYA
-  const { data, isLoading, isError, error, refetch } = useWeather(selectedCity);
+  const { data, isLoading, isError } = useWeather(selectedCity);
 
   function handleCitySelect(city) {
     setSelectedCity(city);
@@ -29,7 +29,7 @@ export default function App() {
 
     useEffect(() => {
     const savedTime = localStorage.getItem("notificationTime");
-    if (savedTime && Notification.permission === "granted") {
+    if (savedTime && "Notification" in window && Notification.permission === "granted") {
       scheduleDailyNotification(savedTime);
     }
   }, []); 
@@ -102,7 +102,7 @@ export default function App() {
       <Toast message={toast} onClose={() => setToast("")} />
          {/* Footer */}
               <footer className="mt-auto py-6 text-center text-xs text-text-muted border-t border-border/30 relative z-10">
-        <p>WeatherBoard &copy; {new Date().getFullYear()} — Powered by OpenWeatherMap & Open-Meteo. Zain uL Abedin</p>
+        <p>WeatherBoard &copy; {new Date().getFullYear()} — Powered by OpenWeatherMap & Open-Meteo. <span className="hidden sm:inline">Made with</span> ❤️ by <a href="https://www.zainul.site" target="_blank" rel="noopener noreferrer">Zain uL Abedin</a> </p>
       </footer>
     </div>
 
