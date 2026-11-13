@@ -13,7 +13,7 @@ import { storage } from "./lib/storage";
 import { NotificationSettings } from "./components/NotificationSettings";
 import { scheduleDailyNotification } from "./lib/notifications";
 import { ThemeToggle } from "./components/ThemeToggle";
-
+import { CloudBackground } from "./components/CloudBackground"; 
 
 export default function App() {
   const [selectedCity, setSelectedCity] = useState(() => storage.get("lastCity", null));
@@ -35,8 +35,8 @@ export default function App() {
   }, []); 
 
   return (
-    <div className="min-h-screen flex flex-col bg-bg-base text-text-primary selection:bg-accent/30">
-      
+    <div className="relative isolate min-h-screen flex flex-col bg-transparent text-text-primary selection:bg-accent/30">
+        <CloudBackground />
       {/* OFFLINE BANNER (Naya) */}
       {!isOnline && (
         <div className="bg-amber-500/20 border-b border-amber-500/30 px-4 py-2 text-center text-sm font-medium text-amber-300 backdrop-blur-md sticky top-0 z-50">
@@ -44,8 +44,11 @@ export default function App() {
         </div>
       )}
 
-      <header className={`sticky ${!isOnline ? 'top-[40px]' : 'top-0'} z-40 border-b border-border/40 bg-bg-base/80 backdrop-blur-md px-4 md:px-8 py-4 transition-all`}>
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+<header 
+  className={`sticky ${
+    !isOnline ? 'top-[40px]' : 'top-0'
+  } z-40 border-b border-border/40 bg-bg-base/60 backdrop-blur-xl px-4 md:px-8 py-4 transition-all duration-300`}
+>        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-blue-600 flex items-center justify-center shadow-lg shadow-accent/20">
               <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,7 +68,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="flex-1 px-4 md:px-8 py-8 md:py-12">
+      <main className="relative z-10 flex-1 px-4 md:px-8 py-8 md:py-12">
         <div className="max-w-3xl mx-auto space-y-8">
           {!selectedCity && (
             <div className="text-center py-20">
@@ -97,6 +100,12 @@ export default function App() {
 
       <InstallPrompt /> {/* NAYA */}
       <Toast message={toast} onClose={() => setToast("")} />
+         {/* Footer */}
+              <footer className="mt-auto py-6 text-center text-xs text-text-muted border-t border-border/30 relative z-10">
+        <p>WeatherBoard &copy; {new Date().getFullYear()} — Powered by OpenWeatherMap & Open-Meteo. Zain uL Abedin</p>
+      </footer>
     </div>
+
+    
   );
 }
