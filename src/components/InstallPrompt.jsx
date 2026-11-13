@@ -42,12 +42,12 @@ export function InstallPrompt() {
     <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-80 z-50 rounded-xl border border-accent/30 bg-bg-elevated p-4 shadow-2xl backdrop-blur-xl">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h4 className="text-sm font-semibold text-white">Install WeatherBoard</h4>
+          <h4 className="text-sm font-semibold text-text-primary">Install WeatherBoard</h4>
           <p className="text-xs text-text-secondary mt-1">
             Add to your home screen for quick access and offline mode.
           </p>
         </div>
-        <button onClick={handleDismiss} className="text-text-muted hover:text-white">
+        <button onClick={handleDismiss} className="text-text-muted hover:text-text-primary">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -62,7 +62,7 @@ export function InstallPrompt() {
         </button>
         <button
           onClick={handleDismiss}
-          className="flex-1 min-h-touch rounded-lg border border-border bg-bg-card px-3 py-2 text-sm font-medium text-text-secondary hover:text-white transition-colors"
+          className="flex-1 min-h-touch rounded-lg border border-border bg-bg-card px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
         >
           Not now
         </button>

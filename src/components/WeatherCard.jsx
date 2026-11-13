@@ -17,7 +17,7 @@ export function WeatherCard({ city, weather, isStale }) {
       <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <div className="flex items-center gap-3">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text-primary">
               {city.name}
             </h2>
             <span className="px-2.5 py-1 rounded-md bg-bg-elevated text-xs font-medium text-text-secondary border border-border">
@@ -27,7 +27,7 @@ export function WeatherCard({ city, weather, isStale }) {
           <p className="text-text-secondary text-sm mt-1">{city.region}</p>
           
           <div className="mt-6 flex items-end gap-2">
-            <h3 className="text-6xl font-bold tracking-tighter text-white">
+            <h3 className="text-6xl font-bold tracking-tighter text-text-primary">
               {current.tempC}°
             </h3>
             <span className="text-lg text-text-secondary mb-2 font-medium">C</span>
@@ -50,11 +50,11 @@ export function WeatherCard({ city, weather, isStale }) {
       <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t border-border/50">
         <div>
           <dt className="text-xs font-medium text-text-muted uppercase tracking-wider">Humidity</dt>
-          <dd className="text-lg font-semibold text-white mt-1">{current.humidity}%</dd>
+          <dd className="text-lg font-semibold text-text-primary mt-1">{current.humidity}%</dd>
         </div>
         <div>
           <dt className="text-xs font-medium text-text-muted uppercase tracking-wider">Wind</dt>
-          <dd className="text-lg font-semibold text-white mt-1">{current.windKph} km/h</dd>
+          <dd className="text-lg font-semibold text-text-primary mt-1">{current.windKph} km/h</dd>
         </div>
         <div className="col-span-2 sm:col-span-1">
           <dt className="text-xs font-medium text-text-muted uppercase tracking-wider">Source</dt>

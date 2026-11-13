@@ -53,7 +53,7 @@ export function SearchBar({ onCitySelect }) {
           onBlur={() => setTouched(true)}
           placeholder="Search for a city..."
           autoComplete="off"
-          className={`w-full min-h-touch rounded-xl bg-bg-elevated/50 border pl-10 pr-4 py-3 text-sm text-white placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-bg-elevated transition-all ${
+          className={`w-full min-h-touch rounded-xl bg-bg-elevated/50 border pl-10 pr-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-bg-elevated transition-all ${
             isEmptyError ? "border-red-500/50" : "border-border/80 focus:border-accent/50"
           }`}
         />

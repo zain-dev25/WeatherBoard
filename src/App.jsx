@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { SearchBar } from "./components/SearchBar";
 import { WeatherCard } from "./components/WeatherCard";
 import { Forecast } from "./components/Forecast";
@@ -10,6 +10,10 @@ import { InstallPrompt } from "./components/InstallPrompt"; // NAYA
 import { useWeather } from "./hooks/useWeather";
 import { useOnlineStatus } from "./hooks/useOnlineStatus"; // NAYA
 import { storage } from "./lib/storage";
+import { NotificationSettings } from "./components/NotificationSettings";
+import { scheduleDailyNotification } from "./lib/notifications";
+import { ThemeToggle } from "./components/ThemeToggle";
+
 
 export default function App() {
   const [selectedCity, setSelectedCity] = useState(() => storage.get("lastCity", null));
@@ -23,8 +27,15 @@ export default function App() {
     storage.set("lastCity", city);
   }
 
+    useEffect(() => {
+    const savedTime = localStorage.getItem("notificationTime");
+    if (savedTime && Notification.permission === "granted") {
+      scheduleDailyNotification(savedTime);
+    }
+  }, []); 
+
   return (
-    <div className="min-h-screen flex flex-col bg-[#0a0c10] text-white selection:bg-accent/30">
+    <div className="min-h-screen flex flex-col bg-bg-base text-text-primary selection:bg-accent/30">
       
       {/* OFFLINE BANNER (Naya) */}
       {!isOnline && (
@@ -46,6 +57,8 @@ export default function App() {
           <div className="w-full md:max-w-md">
             <SearchBar onCitySelect={handleCitySelect} />
           </div>
+          <ThemeToggle />
+               <NotificationSettings />
         </div>
         <div className="max-w-5xl mx-auto">
           <FavouritesPanel onSelect={handleCitySelect} currentCityId={selectedCity?.id} />

@@ -27,7 +27,7 @@ export function CitySuggestions({ results, isLoading, error, hasSearched, query,
     return (
       <div className={`${baseClass} p-4`}>
         <p className="text-sm text-text-secondary">
-          No cities match "<span className="text-white">{trimmed}</span>". Try a different spelling.
+          No cities match "<span className="text-text-primary">{trimmed}</span>". Try a different spelling.
         </p>
       </div>
     );
@@ -42,9 +42,9 @@ export function CitySuggestions({ results, isLoading, error, hasSearched, query,
           <button
             type="button"
             onClick={() => onSelect(city)}
-            className="w-full text-left px-4 py-3 hover:bg-bg-card transition-colors border-b border-border/50 last:border-0 flex flex-col"
+            className="w-full text-left px-4 py-3 hover:bg-bg-elevated transition-colors border-b border-border/50 last:border-0 flex flex-col"
           >
-            <div className="text-sm font-medium text-white">{city.name}</div>
+            <div className="text-sm font-medium text-text-primary">{city.name}</div>
             <div className="text-xs text-text-secondary mt-0.5">
               {[city.region, city.country].filter(Boolean).join(" · ")}
             </div>

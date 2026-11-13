@@ -26,7 +26,7 @@ export function Forecast({ days }) {
               className="w-12 h-12 my-2 transition-transform group-hover:scale-110"
               loading="lazy"
             />
-            <p className="text-base font-semibold text-white">
+            <p className="text-base font-semibold text-text-primary">
               {day.tempMaxC}° <span className="text-text-muted text-sm font-normal">/ {day.tempMinC}°</span>
             </p>
             <p className="text-[11px] text-text-muted capitalize mt-1 line-clamp-1">

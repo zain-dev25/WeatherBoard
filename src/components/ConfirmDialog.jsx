@@ -60,7 +60,7 @@ export function ConfirmDialog({
             onClick={onConfirm}
             className={`min-h-touch px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               destructive
-                ? "bg-red-500/20 border border-red-500/40 text-red-200 hover:bg-red-500/30"
+                ? "bg-red-500/10 border border-red-500/40 text-red-700 hover:bg-red-500/20 dark:bg-red-500/20 dark:text-red-200 dark:hover:bg-red-500/30"
                 : "bg-accent hover:bg-accent-muted text-white"
             }`}
           >
