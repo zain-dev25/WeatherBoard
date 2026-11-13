@@ -2,7 +2,7 @@ export function CitySuggestions({ results, isLoading, error, hasSearched, query,
   const trimmed = query.trim();
   if (trimmed.length < 2) return null;
 
-  const baseClass = "absolute z-50 mt-2 w-full rounded-xl border border-border/80 bg-bg-elevated/95 backdrop-blur-xl shadow-2xl overflow-hidden";
+  const baseClass = "absolute z-50 mt-2 w-full rounded-xl border border-border/80 bg-white dark:bg-black backdrop-blur-xl shadow-2xl overflow-hidden";
 
   if (isLoading) {
     return (
@@ -42,7 +42,7 @@ export function CitySuggestions({ results, isLoading, error, hasSearched, query,
           <button
             type="button"
             onClick={() => onSelect(city)}
-            className="w-full text-left px-4 py-3 hover:bg-bg-elevated transition-colors border-b border-border/50 last:border-0 flex flex-col"
+            className="w-full text-left px-4 py-3 hover:bg-gray-100 dark:hover:bg-neutral-900 transition-colors border-b border-border/50 last:border-0 flex flex-col"
           >
             <div className="text-sm font-medium text-text-primary">{city.name}</div>
             <div className="text-xs text-text-secondary mt-0.5">
