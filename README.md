@@ -1,16 +1,27 @@
-# React + Vite
+# WeatherBoard 🌤️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive, installable weather dashboard built with React, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+**URL:** [Yahan apna Vercel/Netlify link daalein]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
+- **City Search:** Live autocomplete via GeoDB Cities API (300ms debounce).
+- **Weather Data:** Current conditions + 5-day forecast via OpenWeatherMap, with Open-Meteo as a fallback.
+- **Favourites:** Save up to 5 cities (persisted in localStorage with graceful degradation).
+- **PWA:** Installable on desktop/mobile, works offline for the last viewed city.
+- **Notifications:** Daily morning reminder using the Web Notifications API.
+- **Responsive:** Optimized for 375px, 768px, and 1280px.
 
-## React Compiler
+## 🛠️ Tech Stack
+- **Frontend:** React 18, Vite, Tailwind CSS
+- **State Management:** Zustand (Favourites), TanStack Query (Weather)
+- **PWA:** `vite-plugin-pwa` (Workbox)
+- **APIs:** OpenWeatherMap, Open-Meteo, GeoDB Cities (RapidAPI)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 💻 Setup Instructions
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/weatherboard.git
+   cd weatherboard
