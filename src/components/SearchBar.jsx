@@ -46,7 +46,7 @@ export function SearchBar({ onCitySelect }) {
         </div>
         
         <input
-          type="text"
+          type="search"
           value={query}
           onChange={handleChange}
           onFocus={() => trimmed.length >= 2 && setOpen(true)}
