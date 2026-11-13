@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* DEFAULT (Light Mode) */
+:root {
+  --bg-base: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --border-color: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6;
+  --accent-muted: #2563eb;
+}
+
+/* DARK MODE (Jab html tag par .dark class ho) */
+.dark {
+  --bg-base: #0a0c10;
+  --bg-card: #121820;
+  --bg-elevated: #1a222d;
+  --border-color: #1f2833;
+  --text-primary: #e8eef7;
+  --text-secondary: #8a97a8;
+  --text-muted: #5a6678;
+  --accent: #5b8def;
+  --accent-muted: #3b6fd4;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  @apply antialiased transition-colors duration-300;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  border-color: var(--border-color);
+}

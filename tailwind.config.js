@@ -1,30 +1,32 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-content: ["./index.html", "./src/**/*.{js,jsx}"],  theme: {
+  darkMode: 'class',
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  theme: {
     extend: {
-      screens: {
-        sm: "375px",
-        md: "768px",  
-        lg: "1280px",
+      screens: { 
+        sm: "375px", 
+        md: "768px", 
+        lg: "1280px" 
       },
       colors: {
         bg: {
-          base: "#0b0f14",
-          card: "#121820",
-          elevated: "#1a222d",
+          base: "var(--bg-base)",
+          card: "var(--bg-card)",
+          elevated: "var(--bg-elevated)",
         },
         accent: {
-          DEFAULT: "#5b8def",
-          muted: "#3b6fd4",
+          DEFAULT: "var(--accent)",
+          muted: "var(--accent-muted)",
         },
         text: {
-          primary: "#e8eef7",
-          secondary: "#8a97a8",
-          muted: "#5a6678",
+          primary: "var(--text-primary)",
+          secondary: "var(--text-secondary)",
+          muted: "var(--text-muted)",
         },
         border: {
-          DEFAULT: "#1f2833",
-          focus: "#5b8def",
+          DEFAULT: "var(--border-color)",
+          focus: "var(--accent)",
         },
       },
       minHeight: { touch: "44px" },
