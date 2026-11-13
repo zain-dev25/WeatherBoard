@@ -4,8 +4,7 @@ export function WeatherCard({ city, weather, isStale }) {
   const { current, source } = weather;
 
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-border/50 bg-bg-card p-6 md:p-8 shadow-lg">
-      {/* Subtle Gradient Background */}
+<section className="relative overflow-hidden rounded-2xl border bg-bg-card/80 backdrop-blur-xl p-6 md:p-8 shadow-2xl">      {/* Subtle Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-transparent pointer-events-none" />
 
       {isStale && (
