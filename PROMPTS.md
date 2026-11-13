@@ -17,3 +17,8 @@ in localStorage with TTL."
 Agent issue: Initially it tried to render OWM forecast items directly —
 would have shown 40 three-hour blocks instead of 5 days. I had it group
 by date and pick a midday slot for the condition icon.
+
+### Step 5 — PWA & Offline
+Prompt: "Implement PWA install prompt and offline status banner. Use navigator.onLine to detect connection and show a banner. Ensure last city weather stays visible."
+
+Agent Issue: The agent initially tried to use a complex service worker script for offline detection. I simplified it to `navigator.onLine` + VitePWA's automatic service worker caching which is more reliable for this scope.
