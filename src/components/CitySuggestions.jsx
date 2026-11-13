@@ -1,21 +1,15 @@
-export function CitySuggestions({
-  results,
-  isLoading,
-  error,
-  hasSearched,
-  query,
-  onSelect,
-}) {
+export function CitySuggestions({ results, isLoading, error, hasSearched, query, onSelect }) {
   const trimmed = query.trim();
-
   if (trimmed.length < 2) return null;
+
+  const baseClass = "absolute z-50 mt-2 w-full rounded-xl border border-border/80 bg-bg-elevated/95 backdrop-blur-xl shadow-2xl overflow-hidden";
 
   if (isLoading) {
     return (
-      <div className="absolute z-20 mt-2 w-full rounded-lg border border-border bg-bg-elevated shadow-xl p-4">
-        <div className="flex items-center gap-2 text-text-secondary text-sm">
+      <div className={`${baseClass} p-4`}>
+        <div className="flex items-center gap-3 text-text-secondary text-sm">
           <span className="h-4 w-4 animate-spin rounded-full border-2 border-text-muted border-t-accent" />
-          Searching cities…
+          Searching cities...
         </div>
       </div>
     );
@@ -23,19 +17,18 @@ export function CitySuggestions({
 
   if (error) {
     return (
-      <div
-        role="alert"
-        className="absolute z-20 mt-2 w-full rounded-lg border border-red-500/40 bg-red-500/10 p-3 text-sm text-red-300"
-      >
-        {error}
+      <div className={`${baseClass} p-4 border-red-500/30 bg-red-500/10`}>
+        <p className="text-sm text-red-300">{error}</p>
       </div>
     );
   }
 
   if (hasSearched && results.length === 0) {
     return (
-      <div className="absolute z-20 mt-2 w-full rounded-lg border border-border bg-bg-elevated p-3 text-sm text-text-secondary">
-        No cities match "{trimmed}". Try a different spelling or a bigger city nearby.
+      <div className={`${baseClass} p-4`}>
+        <p className="text-sm text-text-secondary">
+          No cities match "<span className="text-white">{trimmed}</span>". Try a different spelling.
+        </p>
       </div>
     );
   }
@@ -43,23 +36,16 @@ export function CitySuggestions({
   if (results.length === 0) return null;
 
   return (
-    <ul
-      role="listbox"
-      className="absolute z-20 mt-2 w-full max-h-80 overflow-y-auto rounded-lg border border-border bg-bg-elevated shadow-xl"
-    >
+    <ul className={`${baseClass} max-h-80 overflow-y-auto`}>
       {results.map((city) => (
         <li key={city.id}>
           <button
             type="button"
-            role="option"
-            aria-selected="false"
             onClick={() => onSelect(city)}
-            className="w-full min-h-touch text-left px-4 py-3 hover:bg-bg-card focus:bg-bg-card focus:outline-none border-b border-border last:border-b-0 transition-colors"
+            className="w-full text-left px-4 py-3 hover:bg-bg-card transition-colors border-b border-border/50 last:border-0 flex flex-col"
           >
-            <div className="text-sm font-medium text-text-primary">
-              {city.name}
-            </div>
-            <div className="text-xs text-text-secondary">
+            <div className="text-sm font-medium text-white">{city.name}</div>
+            <div className="text-xs text-text-secondary mt-0.5">
               {[city.region, city.country].filter(Boolean).join(" · ")}
             </div>
           </button>

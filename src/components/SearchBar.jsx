@@ -10,7 +10,6 @@ export function SearchBar({ onCitySelect }) {
 
   const { results, isLoading, error, hasSearched } = useCitySearch(query);
 
-  // close dropdown on outside click
   useEffect(() => {
     function handleClick(e) {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
@@ -36,46 +35,37 @@ export function SearchBar({ onCitySelect }) {
     setOpen(true);
   }
 
-  function handleBlur() {
-    setTouched(true);
-  }
-
-  function handleFocus() {
-    if (trimmed.length >= 2) setOpen(true);
-  }
-
   return (
-    <div ref={containerRef} className="relative w-full max-w-xl">
-      <label htmlFor="city-search" className="sr-only">
-        Search for a city
-      </label>
+    <div ref={containerRef} className="relative w-full">
       <div className="relative">
+        {/* Search Icon */}
+        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+          <svg className="w-5 h-5 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        
         <input
-          id="city-search"
           type="text"
           value={query}
           onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          placeholder="Search for a city…"
+          onFocus={() => trimmed.length >= 2 && setOpen(true)}
+          onBlur={() => setTouched(true)}
+          placeholder="Search for a city..."
           autoComplete="off"
-          aria-invalid={isEmptyError}
-          aria-describedby={isEmptyError ? "city-error" : undefined}
-          className={`w-full min-h-touch rounded-lg bg-bg-card border px-4 py-3 pr-12 text-sm placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent/60 transition ${
-            isEmptyError
-              ? "border-red-500/60"
-              : "border-border focus:border-border-focus"
+          className={`w-full min-h-touch rounded-xl bg-bg-elevated/50 border pl-10 pr-4 py-3 text-sm text-white placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-bg-elevated transition-all ${
+            isEmptyError ? "border-red-500/50" : "border-border/80 focus:border-accent/50"
           }`}
         />
         {isLoading && (
-          <span className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 animate-spin rounded-full border-2 border-text-muted border-t-accent" />
+          <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center">
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-text-muted border-t-accent" />
+          </div>
         )}
       </div>
 
       {isEmptyError && (
-        <p id="city-error" className="mt-2 text-xs text-red-400">
-          Please enter a city name to see weather.
-        </p>
+        <p className="mt-2 text-xs text-red-400">Please enter a city name to see weather.</p>
       )}
 
       {open && (
